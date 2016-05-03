@@ -176,8 +176,6 @@ func (b *Board) GetCatalog() ([]*Thread, error) {
 			return nil, err
 		}
 
-		fmt.Println(pages)
-
 		b.CatalogCache = nil
 		for _, page := range pages {
 			for _, thread := range page.Threads {
