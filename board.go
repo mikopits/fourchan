@@ -212,7 +212,7 @@ func Request(url string, lastModified time.Time) (*http.Response, error) {
 		return nil, err
 	}
 
-	req.Header.Set("User-Agent", fmt.Sprintf("go-fourchan/%s", Version))
+	req.Header.Set("User-Agent", fmt.Sprintf("go-fourchan/%s", version))
 	if lastModified.Equal(time.Time{}) {
 		req.Header.Set("If-Modified-Since", lastModified.UTC().Format(http.TimeFormat))
 	}
