@@ -31,8 +31,8 @@ type PostData struct {
 	CountryName     string     `json:"country_name"`
 	Subject         string     `json:"sub"`
 	Comment         string     `json:"com"`
-	Tim             int        `json:"time"`
-	Filename        string     `json:filename`
+	Tim             int        `json:"tim"`
+	Filename        string     `json:"filename"`
 	Extension       string     `json:"extension"`
 	Filesize        int        `json:"fsize"`
 	Md5             string     `json:"md5"`
