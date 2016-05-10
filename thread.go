@@ -44,14 +44,14 @@ func NewThreadFromResponse(b *Board, resp *http.Response, id int) (*Thread, erro
 
 // Parses JSON from an http.Response.Body and returns a Thread.
 func NewThreadFromPostsInfo(postsInfo PostsInfo, b *Board, id int, lastModified time.Time) (*Thread, error) {
-	thread := &Thread{Board: b, Id: id, Expired: false}
+	thread := &Thread{Board: b, Id: id}
 	if !lastModified.Equal(time.Time{}) {
 		thread.LastModified = lastModified
 	}
 
-	thread.Topic = NewPost(thread, &postsInfo.Posts[0])
+	thread.Topic = NewPost(thread, postsInfo.Posts[0])
 	for _, post := range postsInfo.Posts[1:] {
-		thread.Replies = append(thread.Replies, NewPost(thread, &post))
+		thread.Replies = append(thread.Replies, NewPost(thread, post))
 	}
 
 	if id != 0 {
@@ -145,17 +145,17 @@ func (t *Thread) Update(force bool) (int, error) {
 
 		originalPostCount := len(t.Replies)
 
-		t.Topic = NewPost(t, &posts.Posts[0])
+		t.Topic = NewPost(t, posts.Posts[0])
 		if t.LastReplyId != 0 && !force {
 			for _, post := range posts.Posts[1:] {
 				if post.PostNumber > t.LastReplyId {
-					t.Replies = append(t.Replies, NewPost(t, &post))
+					t.Replies = append(t.Replies, NewPost(t, post))
 				}
 			}
 		} else {
 			t.Replies = nil
 			for _, post := range posts.Posts[1:] {
-				t.Replies = append(t.Replies, NewPost(t, &post))
+				t.Replies = append(t.Replies, NewPost(t, post))
 			}
 		}
 

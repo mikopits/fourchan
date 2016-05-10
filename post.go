@@ -12,7 +12,7 @@ const (
 
 type Post struct {
 	Thread *Thread
-	Data   *PostData
+	Data   PostData
 }
 
 type PostData struct {
@@ -62,7 +62,7 @@ type PostsInfo struct {
 	Posts []PostData `json:"posts"`
 }
 
-func NewPost(t *Thread, data *PostData) *Post {
+func NewPost(t *Thread, data PostData) *Post {
 	return &Post{
 		Thread: t,
 		Data:   data,
