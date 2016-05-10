@@ -33,7 +33,7 @@ type PostData struct {
 	Comment         string     `json:"com"`
 	Tim             int        `json:"tim"`
 	Filename        string     `json:"filename"`
-	Extension       string     `json:"extension"`
+	Extension       string     `json:"ext"`
 	Filesize        int        `json:"fsize"`
 	Md5             string     `json:"md5"`
 	ImageWidth      int        `json:"w"`
